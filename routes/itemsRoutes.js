@@ -1,37 +1,19 @@
-const express = require("express")
+const express = require("express");
+const{ getItems, postItems, getSingleItem, deleteItem, updateItem }= require("../controllers/itemsControllers");
 
- /*Router */
- const router = express.Router()
+/*Router */
+const router = express.Router();
 
- /* get all itens */
- router.get("/",(req,res)=>{
-  res.json({message:'this is get requiest'})
-  })
-
- /* get a iten */
-
-  
-  router.get("/:id",(req,res)=>{
-  res.json({message:'this is single requiest'})
-  })
-
- /* post a iten */
-  router.post("/",(req,res)=>{
-    res.json({message:'this is a post req'})
-  })
-
- /* get a  deleted iten */
-
-router.delete("/:id",(req,res)=>{
-  res.json({message:'deleted a item'})
-})
-
- /* patch a iten */
-router.patch("/:id",(req,res)=>{
-  res.json({message:"update a item"})
-})
+/*====================== get all itens ===========================*/
+router.get("/",getItems);
+/*====================== get  a item ===========================*/
+router.get("/:id", getSingleItem);
+/*====================== post  a item ===========================*/
+router.post("/", postItems);
+/*====================== delete  a item ===========================*/
+router.delete("/:id",deleteItem);
+/*====================== update a item ===========================*/
+router.patch("/:id", updateItem);
 
 
- module.exports = router
-
-
+module.exports = router;
